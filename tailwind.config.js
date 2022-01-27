@@ -11,6 +11,7 @@ module.exports = {
     },
     fontFamily: {
       sans: ['Lato'],
+      brand: ['DM Serif Display'],
     },
     extend: {},
   },

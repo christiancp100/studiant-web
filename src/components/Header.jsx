@@ -9,7 +9,7 @@ import { useRouter } from 'next/router';
 const Header = () => {
   const router = useRouter()
 
-  return <div className="lg:mt-12 lg:mx-20 mt-6 mx-4">
+  return <div>
     <div className="flex justify-between lg:mb-0 mb-12">
       <Link href="/"><a className="font-brand text-4xl">Studiant.</a></Link>
       <Menu className="lg:block hidden" />
@@ -22,7 +22,7 @@ const Header = () => {
           de estudiantes para así poder mejorar las condiciones de los alquileres de estudiantes,
           así como los servicios ofertados y los precios.
         </h2>
-        <Button onClick={() => router.push("/pisos")} className="lg:self-start justify-center" Icon={RightArrow}>Ver pisos</Button>
+        <Button onClick={() => router.push("/pisos")} className="bg-primary lg:self-start justify-center" Icon={RightArrow}>Ver pisos</Button>
       </div>
       <Image
         src="/img/hero.svg"

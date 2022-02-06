@@ -18,7 +18,6 @@ Button.propTypes = {
 }
 
 Button.defaultProps = {
-
   Icon: RightArrow
 }
 

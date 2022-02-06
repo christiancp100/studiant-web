@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 
 
 const Select = ({ name, placeholder, options }) => {
-  console.log('options', options.map(option => option.value));
   return (
     <select name={name} className="appearance-none rounded-lg shadow-md">
       <option>{placeholder}</option>

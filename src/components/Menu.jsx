@@ -7,11 +7,15 @@ const MenuElement = ({ children, href }) => (
 )
 
 const Menu = (props) => {
-  return <ul {...props}>
-    <MenuElement href="/">Inicio</MenuElement>
-    <MenuElement href="/pisos">Pisos</MenuElement>
-    <MenuElement href="/contact">Contáctanos</MenuElement>
-  </ul>;
+  return <div className="flex justify-between lg:mb-0 mb-12 items-end">
+    <Link href="/"><a className="font-brand text-4xl">Studiant.</a></Link>
+    <ul className="lg:block hidden" {...props}>
+      <MenuElement href="/">Inicio</MenuElement>
+      <MenuElement href="/pisos">Pisos</MenuElement>
+      <MenuElement href="/contact">Contáctanos</MenuElement>
+    </ul>
+  </div>
+
 };
 
 export default Menu;

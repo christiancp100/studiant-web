@@ -15,7 +15,7 @@ module.exports = function (api) {
             utils: './src/utils',
             pages: './src/pages',
             public: './public',
-            public: './styles',
+            styles: './styles',
             root: './',
           },
         },

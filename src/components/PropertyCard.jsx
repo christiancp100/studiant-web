@@ -14,7 +14,7 @@ const PropertyBadge = ({ Icon, text }) => (
 const PropertyCard = ({ property, id }) => {
   const router = useRouter()
   const img = process.env.backendUrl + property.photos?.data[0]?.attributes?.formats?.medium?.url
-  const { title, location, available_roommates, surface, price } = property
+  const { title, location, availableRoommates, surface, price } = property
 
 
 
@@ -29,7 +29,7 @@ const PropertyCard = ({ property, id }) => {
           <span className="font-light text-md">
             {location}
           </span>
-          <PropertyBadge text={available_roommates} Icon={UserGroup} />
+          <PropertyBadge text={availableRoommates} Icon={UserGroup} />
           <PropertyBadge text={<span className="ml-2">{surface} m<sup>2</sup></span>} Icon={Cube} />
         </div>
         <span className="self-end text-secondary font-bold text-2xl">{price}€</span>

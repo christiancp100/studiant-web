@@ -25,7 +25,7 @@ const useGetProperties = (opts) => {
       const { data: properties } = await requestClient.get(
         `/api/apartments?populate=*&${options}`,
       );
-
+      console.log('properties', properties);
       const page = queryObj.pagination.page;
       const pageCount = properties.meta?.pagination?.pageCount;
 

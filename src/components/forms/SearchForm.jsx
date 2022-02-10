@@ -1,11 +1,11 @@
 import React from 'react';
-import qs from 'qs';
-import _ from 'lodash'
+import _ from 'lodash';
 import Button from '../ui/Button';
 import Loop from '../icons/Loop';
 import Input from '../ui/Input';
 import Select from '../ui/Select';
 import { Field, Formik } from 'formik';
+import { useRouter } from 'next/router';
 
 const formOptions = {
   campus: [
@@ -20,40 +20,15 @@ const formOptions = {
   ],
 };
 
-const SearchForm = ({ className, title, search }) => {
-
-  const buildQuery = (v) => {
-    console.log('v', v);
-    const values = _.pickBy(v, v => (v.length > 0 || _.isNumber(v)))
-    console.log('values', values);
-    return qs.stringify({
-      filters: {
-        campus: {
-          $eq: values.campus
-        },
-        availableRoommates: {
-          $gte: values.rooms
-        },
-        price: {
-          $lte: values.maxPrice
-        },
-        availability: {
-          $gte: values.availability
-        }
-      }
-    })
-  }
-
-  const initialValues = {
-    campus: "",
-    rooms: "",
-    availability: "",
-    maxPrice: ""
-  }
-
+const SearchForm = ({ className, title, search, initialValues }) => {
+  const router = useRouter()
   return (
     <Formik initialValues={initialValues} onSubmit={(values, { setSubmitting }) => {
-      search(buildQuery(values))
+      const queryParams = _.pickBy(values, (v) => v.length > 0 || _.isNumber(v));
+      if (!search) {
+        router.push({ pathname: "/pisos", query: queryParams })
+      }
+      search(values)
       setSubmitting(false)
     }}>
       {({
@@ -71,6 +46,7 @@ const SearchForm = ({ className, title, search }) => {
               Encuentra lo que buscas
             </span>
             <Select
+              selected={router.query.campus}
               placeholder={"Campus"}
               onChange={handleChange}
               name="campus"
@@ -102,5 +78,14 @@ const SearchForm = ({ className, title, search }) => {
     </Formik>
   );
 };
+
+SearchForm.defaultProps = {
+  initialValues: {
+    campus: '',
+    availability: '',
+    rooms: '',
+    maxPrice: '',
+  }
+}
 
 export default SearchForm;

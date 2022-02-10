@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import _ from 'lodash';
 import ContactForm from 'src/components/forms/ContactForm';
 import SearchForm from 'src/components/forms/SearchForm';
 import Menu from 'src/components/Menu';
@@ -10,11 +11,9 @@ import useGetProperties from 'src/hooks/useGetProperties';
 
 export default function Apartments() {
   const { query } = useRouter();
+  console.log('query apartments', query);
   const { properties, metadata, loading, fetch } = useGetProperties(query);
 
-  // if (loading) {
-  //   return
-  // }
   return (
     <div className="flex flex-col items-center">
       <div className="2xl:w-3/4 mb-24">
@@ -25,6 +24,8 @@ export default function Apartments() {
           title="Encuentra aquí lo que buscas"
           className="my-24"
           search={fetch}
+          initialValues={query}
+          s
         />
 
         {loading ? (

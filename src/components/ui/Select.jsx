@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 
 
-const Select = ({ name, placeholder, options, ...rest }) => {
+const Select = ({ name, placeholder, options, selected, ...rest }) => {
   return (
-    <select name={name} className="appearance-none rounded-lg shadow-md" {...rest}>
+    <select defaultValue={selected} name={name} className="appearance-none rounded-lg shadow-md" {...rest}>
       <option value="">{placeholder}</option>
       {options && options.map(option => (
         <option key={option.value} value={option.value}>{option.title}</option>

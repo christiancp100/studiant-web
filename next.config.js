@@ -1,9 +1,9 @@
 module.exports = {
   reactStrictMode: true,
   env: {
-    backendUrl: 'http://localhost:1337',
+    backendUrl: 'https://studiant-api.herokuapp.com',
   },
   images: {
-    domains: ['localhost'],
+    domains: ['studiant-api.herokuapp.com'],
   },
 };

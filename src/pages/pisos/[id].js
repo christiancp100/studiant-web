@@ -13,7 +13,7 @@ export default function Apartment() {
   return (
     <SafeRequest status={status}>
       <div className="flex flex-col items-center">
-        <div className="2xl:w-3/4 w-full space-y-10 mb-24">
+        <div className="w-full space-y-10 mb-24">
           <div className="lg:mt-12 lg:mx-20 mt-6 mx-4">
             <Menu />
           </div>

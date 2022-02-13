@@ -12,7 +12,7 @@ const PhotoCarousel = () => {
   const imgs = [img, img2, img3, img4, img5, img6];
 
   return (
-    <Carousel showStatus={false} onClickItem={() => {}}>
+    <Carousel showStatus={false} onClickItem={() => { }}>
       {imgs &&
         imgs.map((img, i) => (
           <div key={i}>

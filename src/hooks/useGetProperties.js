@@ -41,10 +41,8 @@ const useGetProperties = (opts) => {
       const { data: properties } = await requestClient.get(
         `/api/apartments?populate=*&${buildQuery(options)}`,
       );
-      console.log('properties', properties);
       const page = opts?.page || 1;
       const pageCount = properties.meta?.pagination?.pageCount;
-      console.log('page', pageCount);
 
       if (pageCount < page) {
         router.push('/pisos');

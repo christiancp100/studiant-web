@@ -11,7 +11,6 @@ import useGetProperties from 'src/hooks/useGetProperties';
 
 export default function Apartments() {
   const { query } = useRouter();
-  console.log('query apartments', query);
   const { properties, metadata, loading, fetch } = useGetProperties(query);
 
   return (

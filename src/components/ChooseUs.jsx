@@ -45,7 +45,9 @@ const ChooseUs = () => {
         />
       </div>
     </>
-  )
+  );
 };
+
+ChooseUs.displayName = 'ChooseUs';
 
 export default ChooseUs;

@@ -1,5 +1,5 @@
 import ChooseUs from 'src/components/ChooseUs';
-import FeaturedProperties from 'src/components/FeaturedProperties';
+import FeaturedApartments from 'src/components/FeaturedApartments';
 import SearchForm from 'src/components/forms/SearchForm';
 import Header from 'src/components/Header';
 
@@ -10,7 +10,7 @@ export default function Home() {
         <Header />
         <SearchForm />
         <ChooseUs />
-        <FeaturedProperties />
+        <FeaturedApartments />
       </div>
     </div>
   );

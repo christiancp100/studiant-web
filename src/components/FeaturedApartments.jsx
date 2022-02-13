@@ -8,7 +8,10 @@ import ImageCard from './ui/ImageCard';
 import SafeRequest from './ui/SafeRequest';
 
 const FeaturedProperties = () => {
-  const { data: properties, status } = useQuery('apartments', getApartments)
+  const { data, status } = useQuery('apartments', getApartments)
+
+  const apartments = data?.data;
+
 
 
   return <div>
@@ -21,11 +24,13 @@ const FeaturedProperties = () => {
        pero que no llegan a pasar el filtro, buscamos reformarlos un poco para sacarles el máximo partido. Juzga tu..."
       />
       <div className="grid grid-cols-3 2xl:grid-cols-4 md:grid-cols-2  mb-24 gap-6">
-        {properties && properties.map(property => <PropertyCard id={property.id} key={property.id} property={property.attributes} />)}
+        {apartments && apartments.map(property => <PropertyCard id={property.id} key={property.id} property={property.attributes} />)}
         <ImageCard img={"/img/house.svg"} content={<span className="flex justify-center items-center">Ver Todo <RightArrow /></span>} />
       </div>
     </SafeRequest>
   </div >;
 };
+
+FeaturedProperties.displayName = "FeaturedProperties"
 
 export default FeaturedProperties;

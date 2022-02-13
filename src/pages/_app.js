@@ -6,13 +6,12 @@ function MyApp({ Component, pageProps }) {
   const queryClient = new QueryClient();
 
   return (
-    <>
-      <QueryClientProvider client={queryClient}>
-        <Component {...pageProps} />
-      </QueryClientProvider>
-
-      <Footer />
-    </>
+    <div className="flex flex-col h-screen justify-between">
+        <QueryClientProvider client={queryClient}>
+          <Component {...pageProps} />
+        </QueryClientProvider>
+        <Footer />
+    </div>
   );
 }
 

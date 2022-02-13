@@ -36,14 +36,16 @@ const SearchForm = ({ className, title }) => {
           onSubmit={handleSubmit}
           className={`flex flex-col w-full xl:w-4/5  shadow-2xl rounded-2xl lg:p-12 p-6 mx-auto ${className}`}
         >
-          {title && <span className=" font-bold text-center text-xl">{title}</span>}
+          {title && (
+            <span className=" font-bold text-center text-xl">{title}</span>
+          )}
           <div className="flex mx-auto lg:flex-row flex-col justify-between lg:space-x-4 space-y-4">
             <span className="lg:hidden font-bold text-center text-xl">
               Encuentra lo que buscas
             </span>
             <Select
               selected={router.query.campus}
-              placeholder={"Campus"}
+              placeholder={'Campus'}
               onChange={handleChange}
               name="campus"
               options={formOptions.campus}
@@ -69,9 +71,9 @@ const SearchForm = ({ className, title }) => {
               Buscar
             </Button>
           </div>
-        </form>
+        </form >
       )}
-    </Formik>
+    </Formik >
   );
 };
 
@@ -81,7 +83,9 @@ SearchForm.defaultProps = {
     availability: '',
     rooms: '',
     maxPrice: '',
-  }
-}
+  },
+};
+
+SearchForm.displayName = 'SearchForm';
 
 export default SearchForm;

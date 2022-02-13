@@ -12,7 +12,7 @@ export const getApartments = async (key) => {
 
     const obj = {
       pagination: {
-        pageSize: v.pageSize || 1,
+        pageSize: v.pageSize || 10,
         page: v.page || 1,
       },
       filters: {

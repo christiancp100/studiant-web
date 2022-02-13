@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useQuery } from 'react-query';
 import { getApartments } from 'src/api/apartments';
@@ -10,12 +11,19 @@ import Pagination from 'src/components/ui/Pagination';
 import SafeRequest from 'src/components/ui/SafeRequest';
 
 export default function Apartments() {
-  const { query } = useRouter();
+  const router = useRouter();
+  const query = router.query;
   const { data, status } = useQuery(['apartments', query], getApartments);
 
   const metadata = data?.meta;
 
   const properties = data?.data;
+
+  useEffect(() => {
+    if (metadata?.pagination?.page > metadata?.pagination?.pageCount) {
+      router.push(router.pathname);
+    }
+  });
 
   return (
     <SafeRequest status={status}>

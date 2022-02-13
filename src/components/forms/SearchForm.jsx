@@ -20,16 +20,12 @@ const formOptions = {
   ],
 };
 
-const SearchForm = ({ className, title, search, initialValues }) => {
+const SearchForm = ({ className, title }) => {
   const router = useRouter()
   return (
-    <Formik initialValues={initialValues} onSubmit={(values, { setSubmitting }) => {
+    <Formik initialValues={router.query} onSubmit={(values) => {
       const queryParams = _.pickBy(values, (v) => v.length > 0 || _.isNumber(v));
-      if (!search) {
-        router.push({ pathname: "/pisos", query: queryParams })
-      }
-      search(values)
-      setSubmitting(false)
+      router.push({ pathname: "/pisos", query: { ...queryParams, page: 1 } })
     }}>
       {({
         handleChange,
@@ -54,7 +50,7 @@ const SearchForm = ({ className, title, search, initialValues }) => {
             />
             <Field
               as={Input}
-              className="w-1/2"
+              className="md:w-3/4"
               placeholder="Habitaciones"
               name="rooms"
               type="number"
@@ -68,7 +64,7 @@ const SearchForm = ({ className, title, search, initialValues }) => {
               name="availability"
               type="date"
             />
-            <Field as={Input} placeholder="Precio Max." name="maxPrice" type="number" className="w-3/4" />
+            <Field as={Input} placeholder="Precio Max." name="maxPrice" type="number" className="md:w-3/4" />
             <Button loading={isSubmitting} type="submit" className="bg-secondary" Icon={Loop}>
               Buscar
             </Button>

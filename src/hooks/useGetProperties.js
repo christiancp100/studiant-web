@@ -13,10 +13,11 @@ const useGetProperties = (opts) => {
 
   const buildQuery = (v) => {
     const values = _.pickBy(v, (v) => v.length > 0 || _.isNumber(v));
-    return qs.stringify({
+
+    const obj = {
       pagination: {
-        pageSize: values?.pageSize || 10,
-        page: values?.page || 1,
+        pageSize: v.pageSize || 1,
+        page: v.page || 1,
       },
       filters: {
         campus: {
@@ -32,35 +33,33 @@ const useGetProperties = (opts) => {
           $gte: values.availability,
         },
       },
-    });
+    };
+    return qs.stringify(obj);
   };
 
   const fetch = async (options = {}) => {
+    const { data: properties } = await requestClient.get(
+      `/api/apartments?populate=*&${buildQuery(options)}`,
+    );
+    const page = opts?.page || 1;
+    const pageCount = properties.meta?.pagination?.pageCount;
+
+    if (pageCount < page) {
+      router.push({ pathname: '/pisos', query: { page: 1 } });
+    }
+    setProperties(properties.data);
+    setMetadata(properties.meta);
+  };
+
+  useEffect(() => {
     setLoading(true);
     try {
-      const { data: properties } = await requestClient.get(
-        `/api/apartments?populate=*&${buildQuery(options)}`,
-      );
-      console.log('properties', properties);
-      const page = opts?.page || 1;
-      const pageCount = properties.meta?.pagination?.pageCount;
-      console.log('page', pageCount);
-
-      if (pageCount < page) {
-        router.push('/pisos');
-      }
-
-      setProperties(properties.data);
-      setMetadata(properties.meta);
+      fetch(opts);
     } catch (err) {
       setError(err);
     } finally {
       setLoading(false);
     }
-  };
-
-  useEffect(() => {
-    fetch(opts);
   }, []);
 
   return { properties, metadata, loading, error, fetch };

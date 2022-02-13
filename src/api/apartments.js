@@ -38,3 +38,13 @@ export const getApartments = async (key) => {
   );
   return res.data;
 };
+
+export const getApartment = async ({ queryKey }) => {
+  const [_key, { id }] = queryKey;
+  if (!id) {
+    return;
+  }
+  const res = await requestClient.get(`/api/apartments/${id}?populate=*`);
+  console.log('res', res);
+  return res.data?.data;
+};

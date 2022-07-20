@@ -11,7 +11,7 @@ const Menu = (props) => {
   return (
     <div className="flex justify-between lg:mb-0 mb-12 items-end">
       <Link href="/">
-        <a className="font-brand font-bold text-4xl">Studiant.</a>
+        <a className="font-brand font-bold text-4xl">Studiant.es</a>
       </Link>
       <ul className="lg:block hidden" {...props}>
         <MenuElement href="/">Inicio</MenuElement>

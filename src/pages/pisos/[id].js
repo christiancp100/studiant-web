@@ -8,7 +8,7 @@ import SafeRequest from 'src/components/ui/SafeRequest';
 export default function Apartment() {
   const router = useRouter();
   const id = router.query?.id;
-  const { data, status } = useQuery(['apartment', { id }], getApartment);
+  const { status } = useQuery(['apartment', { id }], getApartment);
 
   return (
     <SafeRequest status={status}>

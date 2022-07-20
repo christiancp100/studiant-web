@@ -1,9 +1,8 @@
-import Link from 'next/link';
 import Image from 'next/image';
 import React from 'react';
 import Menu from './Menu';
-import Button from './ui/Button';
 import RightArrow from './icons/RightArrow';
+import { Button } from "atomics-particles";
 import { useRouter } from 'next/router';
 
 const Header = () => {

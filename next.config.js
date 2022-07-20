@@ -1,9 +1,13 @@
 module.exports = {
   reactStrictMode: true,
   env: {
-    backendUrl: 'https://studiant-api.herokuapp.com',
+    backendUrl: process.env.API_URL || 'http://localhost:1337',
   },
   images: {
-    domains: ['studiant-api.herokuapp.com'],
+    domains: [process.env.IMAGES_URL || 'localhost'],
   },
+  experimental: {
+    outputStandalone: true,
+  },
+  output: 'standalone',
 };

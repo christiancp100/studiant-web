@@ -9,10 +9,10 @@ spec:
     matchLabels:
       app: studiant-web
   strategy:
-  rollingUpdate:
-    maxSurge: 1
-    maxUnavailable: 1
-    minReadySeconds: 5
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+      minReadySeconds: 5
   template:
     metadata:
       labels:

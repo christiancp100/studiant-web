@@ -16,7 +16,7 @@ jobs:
     - name: Build container image
       run: docker build -t christiancp/studiant-web:$(echo $GITHUB_SHA | head -c7) .
     - name: Log in to DigitalOcean Container Registry with short-lived credentials
-      run: doctl registry login --expiry-seconds 1200
+      run: docker login --username ${{secrets.DOCKER_USERNAME}} --password ${{secrets.DOCKER_PASSWORD}}
     - name: Push image to DigitalOcean Container Registry
       run: docker push christiancp/studiant-web:$(echo $GITHUB_SHA | head -c7)
     - name: Update deployment file

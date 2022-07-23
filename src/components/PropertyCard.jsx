@@ -13,9 +13,7 @@ const PropertyBadge = ({ Icon, text }) => (
 
 const PropertyCard = ({ property, id }) => {
   const router = useRouter();
-  const img =
-    process.env.backendUrl +
-    property.photos?.data[0]?.attributes?.formats?.medium?.url;
+  const img = property.photos?.data[0]?.attributes?.formats?.medium?.url;
   const { title, location, availableRoommates, surface, price } = property;
 
   return (
@@ -24,12 +22,12 @@ const PropertyCard = ({ property, id }) => {
       className="flex flex-col justify-between shadow-lg rounded-xl cursor-pointer h-96"
     >
       <div className="relative w-full h-64">
-        <Image
+        {img && <Image
           src={img}
           layout="fill"
           className="rounded-t-xl"
           objectFit="cover"
-        />
+        />}
       </div>
       <div className="mt-2 mb-6 mx-4">
         <span className="font-bold text-lg">{title}</span>
